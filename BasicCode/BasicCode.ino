@@ -23,9 +23,9 @@ const int right_pwm_pin=39;
 
 const int LED_RF = 41;
 
-const int kP = 10;
-const float kD = 40;
-const int baseSpd = 200;
+const int kP = 5;
+const float kD = 0;//= 40;
+const int baseSpd = 40;
 
 ///////////////////////////////////
 void setup() {
@@ -47,7 +47,7 @@ void setup() {
   ECE3_Init();
 
 // set the data rate in bits/second for serial data transmission
-  Serial.begin(9600); 
+  //Serial.begin(9600); 
   delay(2000); //Wait 2 seconds before starting 
   
 }
@@ -58,8 +58,8 @@ void loop() {
 
   ECE3_read_IR(sensorValues);
 
-  //analogWrite(left_pwm_pin,baseSpd);
-  //analogWrite(right_pwm_pin,baseSpd);
+  analogWrite(left_pwm_pin,baseSpd);
+  analogWrite(right_pwm_pin,baseSpd);
 
 // 
   
@@ -97,8 +97,8 @@ void loop() {
 //      Serial.print(baseSpd + kP*error);
 //      Serial.print(" , ");
 //      Serial.print(baseSpd - kD*deltaError);
-      //analogWrite(left_pwm_pin,baseSpd + kP*error);
-      //analogWrite(right_pwm_pin,baseSpd - kD*deltaError);
+      analogWrite(left_pwm_pin,baseSpd + kP*error);
+      analogWrite(right_pwm_pin,baseSpd - kP*error);
     }
     // Need to turn left
     else
@@ -108,13 +108,13 @@ void loop() {
 //      Serial.print(baseSpd - kD*deltaError);
 //      Serial.print(" , ");
 //      Serial.print(baseSpd + kP*error);
-      //analogWrite(left_pwm_pin,baseSpd - kD*deltaError);
-      //analogWrite(right_pwm_pin,baseSpd + kP*error);
+      analogWrite(left_pwm_pin,baseSpd - kP*error);
+      analogWrite(right_pwm_pin,baseSpd + kP*error);
     }
     previousError = error;
-    Serial.print("D: ");
-    Serial.print(abs(maxIr - minIr));
-    Serial.println();
+    //Serial.print("D: ");
+    //Serial.print(abs(maxIr - minIr));
+    //Serial.println();
     delay(50);
 //  digitalWrite(LED_RF, HIGH);
 //  delay(250);
