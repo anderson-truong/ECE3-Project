@@ -60,6 +60,7 @@ pycparser==2.21
 Pygments==2.12.0
 pyparsing==3.0.8
 pyrsistent==0.18.1
+pyserial==3.5
 python-dateutil==2.8.2
 pytz==2022.1
 pywin32==303

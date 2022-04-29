@@ -24,7 +24,8 @@ const int right_pwm_pin=39;
 const int right_push = 73;
 const int left_push = 74;
 
-const int bmp0 = 24;
+const int BMP0 = 24;
+const int BMP1 = 25;
 
 const int LED_RF = 41;
 
@@ -53,20 +54,32 @@ void setup() {
   digitalWrite(right_dir_pin,LOW);
   digitalWrite(right_nslp_pin,HIGH);
 
-  pinMode(bmp0, INPUT_PULLUP);
-  attachInterrupt(bmp0, printIR, FALLING);
+  // Bumper 0 activates Serial
+  pinMode(BMP0, INPUT_PULLUP);
+  attachInterrupt(BMP0, enableSerial, FALLING);
+
+  // Bumper 1 disables Serial
+  pinMode(BMP1, INPUT_PULLUP);
+  attachInterrupt(BMP1, disableSerial, FALLING);
 
   pinMode(left_push, INPUT_PULLUP);
   attachInterrupt(left_push, incrementCalibrate, FALLING);
 
   pinMode(LED_RF, OUTPUT);
+
+  //Serial.begin(9600);
   
   ECE3_Init();
+}
 
-// set the data rate in bits/second for serial data transmission
-  Serial.begin(9600); 
-  delay(2000); //Wait 2 seconds before starting 
-  
+void enableSerial()
+{
+  Serial.begin(9600);
+}
+
+void disableSerial()
+{
+  Serial.end();
 }
 
 void loop() {
@@ -82,29 +95,6 @@ void loop() {
 //  delay(250);
 //  digitalWrite(LED_RF, LOW);
 //  delay(250);
-}
-
-void printCalibrate()
-{
-  Serial.print("Calibrate Pos: ");
-  Serial.print(calibratePos);
-  Serial.println();
-  Serial.print("Min");
-  Serial.println();
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    Serial.print(sensorMin[i]);
-    Serial.print('\t');
-  }
-  Serial.println();
-  Serial.print("Max");
-  Serial.println();
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    Serial.print(sensorMax[i]);
-    Serial.print('\t');
-  }
-  Serial.println();
 }
 
 void printIR()
@@ -138,6 +128,9 @@ void zeroInitialize()
   sensorMax[calibratePos] = 0;
 }
 
+// Starts calibration routine
+// Reads Serial commands (as integers)
+
 // sensorValues[0] is the right-most
 void calibrate()
 {
@@ -154,20 +147,15 @@ void calibrate()
   for (uint8_t i = 0; i < 8; i++)
   {
     sensorAvg[i] /= 5;
-//    Serial.print(sensorAvg[i]);
-//    Serial.print('\t');
   }
   // Find mins/maxs
-  //int m = 0;
   for (uint8_t i = 0; i < 8; i++)
   {
     if (sensorAvg[i] < sensorMin[calibratePos]) 
       sensorMin[calibratePos] = sensorAvg[i];
     if (sensorAvg[i] > sensorMax[calibratePos])
       sensorMax[calibratePos] = sensorAvg[i];
-//    if (sensorValues[i] > sensorValues[m]) m = i;
   }
-  //Serial.print(m);
   sensorMax[calibratePos] -= sensorMin[calibratePos];
   printCalibrate();
 }
@@ -181,4 +169,27 @@ void sensorFusion()
     sensorValues[i] = (1000 * sensorValues[i])/sensorMax[i];
     weightedAvg += sensorValues[i] * weights[i];
   }
+}
+
+void printCalibrate()
+{
+  Serial.print("Calibrate Pos: ");
+  Serial.print(calibratePos);
+  Serial.println();
+  Serial.print("Min");
+  Serial.println();
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    Serial.print(sensorMin[i]);
+    Serial.print('\t');
+  }
+  Serial.println();
+  Serial.print("Max");
+  Serial.println();
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    Serial.print(sensorMax[i]);
+    Serial.print('\t');
+  }
+  Serial.println();
 }
