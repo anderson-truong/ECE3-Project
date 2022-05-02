@@ -91,9 +91,12 @@ void loop() {
 
 void normalize()
 {
-  int16_t sensorMax = 0;
+  // Initialize norm array to 0
+  for (uint8_t i = 0; i < 8; i++) sensorNorm[i] = 0;
+
   // Sum up N number of sensor readings
-  for (uint8_t i = 0; i < 1; i++)
+  uint8_t N = 1;
+  for (uint8_t i = 0; i < N; i++)
   {
     ECE3_read_IR(sensorValues);
     for (uint8_t j = 0; j < 8; j++)
@@ -104,19 +107,16 @@ void normalize()
   for (uint8_t i = 0; i < 8; i++)
   {
     // Divide by N for averages
-    sensorNorm[i] /= 1;
+    sensorNorm[i] /= N;
     // Floor
     sensorNorm[i] -= sensorMin[i];
-    // Find max
-    if (sensorNorm[i] > sensorMax)
-      sensorMax = sensorNorm[i];
   }
   
   // Normalize
   for (uint8_t i = 0; i < 8; i++)
   {
     sensorNorm[i] *= 1000;
-    sensorNorm[i] /= sensorMax;
+    sensorNorm[i] /= sensorMax[i] - sensorMin[i];
     //Serial.print(sensorNorm[i]);
     //Serial.print('\t');
   }
@@ -138,7 +138,6 @@ void fusion()
 void offMotors()
 {
   calib = 1;
-  digitalWrite(LED_RF, HIGH);
   analogWrite(left_pwm_pin, 0);
   analogWrite(right_pwm_pin, 0);
 }
@@ -146,42 +145,50 @@ void offMotors()
 void onMotors()
 {
   calib = 0;
-  digitalWrite(LED_RF, LOW);
 }
 
-// Finds mins
+// Finds mins/max
 void calibrate()
 {
   offMotors();
-  int minVals[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  digitalWrite(LED_RF, HIGH);
+  int avg[8] = {0, 0, 0, 0, 0, 0, 0, 0};
   for (uint8_t i = 0; i < 5; i++)
   {
     ECE3_read_IR(sensorValues);
     for (uint8_t j = 0; j < 8; j++)
     {
-      minVals[j] += sensorValues[j];
+      avg[j] += sensorValues[j];
     }
     delay(50);
   }
   for (uint8_t i = 0; i < 8; i++)
   {
-    Serial.print(minVals[i]);
-    Serial.print('\t');
-    minVals[i] /= 5;
+    avg[i] /= 5;
     
-    if (minVals[i] < sensorMin[i])
-      sensorMin[i] = minVals[i];
+    if (avg[i] < sensorMin[i])
+      sensorMin[i] = avg[i];
+    if (avg[i] > sensorMax[i])
+      sensorMax[i] = avg[i];
+    
   }
-  Serial.println();
-  //printMins();
+  printBounds();
   delay(50);
+  digitalWrite(LED_RF, LOW);
 }
 
-void printMins()
+void printBounds()
 {
+  Serial.print("Min: ");
   for (uint8_t i = 0; i < 8; i++)
   {
     Serial.print(sensorMin[i]);
+    Serial.print('\t');
+  }
+  Serial.print("Max: ");
+  for (uint8_t i = 0; i < 8; i++)
+  {
+    Serial.print(sensorMax[i]);
     Serial.print('\t');
   }
   Serial.println();
