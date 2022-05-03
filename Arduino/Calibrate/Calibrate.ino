@@ -1,9 +1,7 @@
 #include <ECE3.h>
 
 /*
-
 Calibrates through Serial communication
-
  */
 
 //#include <ECE3_LCD7.h>
