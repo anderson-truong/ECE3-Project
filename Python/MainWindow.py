@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
         self.tableWidget_dataTable.setGeometry(QRect(30, 30, 281, 271))
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(360, 80, 160, 163))
+        self.verticalLayoutWidget.setGeometry(QRect(360, 30, 160, 163))
         self.verticalLayout_serial = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_serial.setObjectName(u"verticalLayout_serial")
         self.verticalLayout_serial.setContentsMargins(0, 0, 0, 0)
@@ -99,6 +99,23 @@ class Ui_MainWindow(object):
         self.pushButton_disconnectSerial.setObjectName(u"pushButton_disconnectSerial")
 
         self.verticalLayout_serial.addWidget(self.pushButton_disconnectSerial)
+
+        self.verticalLayoutWidget_2 = QWidget(self.centralwidget)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(330, 210, 221, 80))
+        self.verticalLayout_sensor = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_sensor.setObjectName(u"verticalLayout_sensor")
+        self.verticalLayout_sensor.setContentsMargins(0, 0, 0, 0)
+        self.pushButton_readSensors = QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_readSensors.setObjectName(u"pushButton_readSensors")
+        self.pushButton_readSensors.setAutoFillBackground(False)
+
+        self.verticalLayout_sensor.addWidget(self.pushButton_readSensors)
+
+        self.pushButton_resetValues = QPushButton(self.verticalLayoutWidget_2)
+        self.pushButton_resetValues.setObjectName(u"pushButton_resetValues")
+
+        self.verticalLayout_sensor.addWidget(self.pushButton_resetValues)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -151,6 +168,8 @@ class Ui_MainWindow(object):
         self.lineEdit_baudrate.setText("")
         self.pushButton_connectSerial.setText(QCoreApplication.translate("MainWindow", u"Connect", None))
         self.pushButton_disconnectSerial.setText(QCoreApplication.translate("MainWindow", u"Disconnect", None))
+        self.pushButton_readSensors.setText(QCoreApplication.translate("MainWindow", u"Read Sensors", None))
+        self.pushButton_resetValues.setText(QCoreApplication.translate("MainWindow", u"Reset Values", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
     # retranslateUi
 
