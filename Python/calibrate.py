@@ -27,11 +27,20 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.data_mins = [2500 for i in range(8)]
         self.data_maxs = [0 for i in range(8)]
 
+        for idx, item in enumerate(self.data_mins):
+            newItem = QtWidgets.QTableWidgetItem(str(item))
+            self.tableWidget_dataTable.setItem(idx, 0, newItem)
+        for idx, item in enumerate(self.data_maxs):
+            newItem = QtWidgets.QTableWidgetItem(str(item))
+            self.tableWidget_dataTable.setItem(idx, 1, newItem)
+
         # Serial object
         self.ser = serial.Serial()
 
         self.pushButton_connectSerial.clicked.connect(self.connect_serial)
         self.pushButton_disconnectSerial.clicked.connect(self.disconnect_serial)
+        self.pushButton_readSensors.clicked.connect(self.readSensors)
+        self.pushButton_resetValues.clicked.connect(self.resetValues)
 
     def connect_serial(self):
         # Check if Serial Port has already been opened
@@ -67,35 +76,40 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.label_status.setText(f'{self.ser.port} not open!')
 
     def readSensors(self):
-        if not self.ser_isopen:
+        if not self.ser.is_open:
             self.label_status.setText(f'No serial connection!')
             return
         data_chunk = []
         data_means = [0 for i in range(8)]
 
-        for i in range(17):
-            input()
-            try:
-                self.ser.write(b'1')
-                for j in range(5):
-                    line = self.ser.readline().decode('utf-8').rstrip(',\n').split(',')
-                    line = [int(item) for item in line]
-                    for idx, item in enumerate(line):
-                        data_means[idx] += item
-                data_means = [item/5. for item in data_means]
-                for idx in range(8):
-                    if data_means[idx] < self.data_mins[idx]:
-                        self.data_mins[idx] = data_means[idx]
-                    if data_means[idx] > self.data_maxs[idx]:
-                        self.data_maxs[idx] = data_means[idx]
-                for idx, item in self.data_mins:
-                    self.tableWidget_dataTable.setItem(idx, 0, item)
-                for idx, item in self.data_maxs:
-                    self.tableWidget_dataTable.setItem(idx, 1, item)
+        try:
+            self.ser.write(b'1')
+            for j in range(5):
+                line = self.ser.readline().decode('utf-8').rstrip(',\r\n').split(',')
+                line = [int(item) for item in line]
+                for idx, item in enumerate(line):
+                    data_means[idx] += item
+            data_means = [int(item/5) for item in data_means]
+            for idx in range(8):
+                if data_means[idx] < self.data_mins[idx]:
+                    self.data_mins[idx] = data_means[idx]
+                if data_means[idx] > self.data_maxs[idx]:
+                    self.data_maxs[idx] = data_means[idx]
+            for idx, item in enumerate(self.data_mins):
+                self.tableWidget_dataTable.item(idx, 0).setText(str(item))
+            for idx, item in enumerate(self.data_maxs):
+                self.tableWidget_dataTable.item(idx, 1).setText(str(item))
 
-            except serial.SerialException:
-                self.label_status.setText(f'No serial connection!')
+        except serial.SerialException:
+            self.label_status.setText(f'No serial connection!')
 
+    def resetValues(self):
+        self.data_mins = [2500 for i in range(8)]
+        self.data_maxs = [0 for i in range(8)]
+        for idx, item in enumerate(self.data_mins):
+            self.tableWidget_dataTable.item(idx, 0).setText(str(item))
+        for idx, item in enumerate(self.data_maxs):
+            self.tableWidget_dataTable.item(idx, 1).setText(str(item))
 
 
 if __name__ == '__main__':
