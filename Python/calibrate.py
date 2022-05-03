@@ -41,6 +41,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_disconnectSerial.clicked.connect(self.disconnect_serial)
         self.pushButton_readSensors.clicked.connect(self.readSensors)
         self.pushButton_resetValues.clicked.connect(self.resetValues)
+        self.updateCode()
 
     def connect_serial(self):
         # Check if Serial Port has already been opened
@@ -102,6 +103,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         except serial.SerialException:
             self.label_status.setText(f'No serial connection!')
+            return
+
+        self.updateCode()
 
     def resetValues(self):
         self.data_mins = [2500 for i in range(8)]
@@ -110,6 +114,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.tableWidget_dataTable.item(idx, 0).setText(str(item))
         for idx, item in enumerate(self.data_maxs):
             self.tableWidget_dataTable.item(idx, 1).setText(str(item))
+
+    def updateCode(self):
+        data_min_str = 'int16_t sensorMin[8] { ' + ', '.join(map(str, self.data_mins)) + ' };'
+        data_max_str = 'int16_t sensorMax[8] { ' + ', '.join(map(str, self.data_maxs)) + '};'
+        self.textBrowser_sensorCode.setText('\n'.join((data_min_str, data_max_str)))
 
 
 if __name__ == '__main__':
