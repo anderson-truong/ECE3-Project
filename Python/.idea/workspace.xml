@@ -3,11 +3,83 @@
   <component name="ChangeListManager">
     <list default="true" id="d0f49e27-4720-42c8-8641-f216b515d047" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/CalibrateData-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/CalibrateData-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/SensorFusionDevelopment-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/SensorFusionDevelopment-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CalibrateData.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/CalibrateData.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SensorFusionDevelopment.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/SensorFusionDevelopment.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/COLLECT-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/COLLECT-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/calibrate.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/calibrate.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/calibrate.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/calibrate.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/warn-calibrate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/warn-calibrate.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/xref-calibrate.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibrate/xref-calibrate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calibrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibrate.spec" beforeDir="false" afterPath="$PROJECT_DIR$/calibrate.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibration.ui" beforeDir="false" afterPath="$PROJECT_DIR$/calibration.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/MSVCP140.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/MSVCP140.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/VCRUNTIME140.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/VCRUNTIME140.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/VCRUNTIME140_1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/VCRUNTIME140_1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_asyncio.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_asyncio.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_bz2.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_bz2.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_ctypes.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_ctypes.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_decimal.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_decimal.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_hashlib.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_hashlib.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_lzma.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_lzma.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_multiprocessing.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_multiprocessing.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_overlapped.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_overlapped.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_queue.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_queue.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_socket.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_socket.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_ssl.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/_ssl.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-console-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-datetime-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-debug-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-errorhandling-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-file-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-file-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-file-l2-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-handle-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-heap-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-interlocked-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-libraryloader-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-localization-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-memory-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-namedpipe-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-processenvironment-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-processthreads-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-processthreads-l1-1-1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-profile-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-rtlsupport-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-string-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-synch-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-synch-l1-2-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-sysinfo-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-timezone-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-core-util-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-conio-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-convert-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-environment-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-filesystem-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-heap-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-locale-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-math-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-process-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-runtime-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-stdio-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-string-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-time-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/api-ms-win-crt-utility-l1-1-0.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/calibrate.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/calibrate.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/libcrypto-1_1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/libcrypto-1_1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/libssl-1_1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/libssl-1_1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/pyexpat.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/pyexpat.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/python3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/python3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/python39.dll" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/python39.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/select.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/select.pyd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/ucrtbase.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/unicodedata.pyd" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibrate/unicodedata.pyd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

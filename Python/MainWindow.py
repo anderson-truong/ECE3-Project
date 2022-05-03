@@ -17,10 +17,11 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(568, 365)
+        MainWindow.resize(569, 431)
         icon = QIcon()
         icon.addFile(u":/icon.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet(u"background-color: rgb(50, 51, 61);")
         self.actionSave = QAction(MainWindow)
         self.actionSave.setObjectName(u"actionSave")
         self.actionSave_as = QAction(MainWindow)
@@ -54,9 +55,11 @@ class Ui_MainWindow(object):
         self.tableWidget_dataTable.setVerticalHeaderItem(7, __qtablewidgetitem9)
         self.tableWidget_dataTable.setObjectName(u"tableWidget_dataTable")
         self.tableWidget_dataTable.setGeometry(QRect(30, 30, 281, 271))
+        self.tableWidget_dataTable.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(50, 51, 61);")
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(360, 30, 160, 163))
+        self.verticalLayoutWidget.setGeometry(QRect(360, 70, 160, 163))
         self.verticalLayout_serial = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_serial.setObjectName(u"verticalLayout_serial")
         self.verticalLayout_serial.setContentsMargins(0, 0, 0, 0)
@@ -68,6 +71,7 @@ class Ui_MainWindow(object):
 
         self.label_serialport = QLabel(self.verticalLayoutWidget)
         self.label_serialport.setObjectName(u"label_serialport")
+        self.label_serialport.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_serialport.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_serial.addWidget(self.label_serialport)
@@ -80,6 +84,7 @@ class Ui_MainWindow(object):
 
         self.label_baudrate = QLabel(self.verticalLayoutWidget)
         self.label_baudrate.setObjectName(u"label_baudrate")
+        self.label_baudrate.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_baudrate.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_serial.addWidget(self.label_baudrate)
@@ -92,35 +97,55 @@ class Ui_MainWindow(object):
 
         self.pushButton_connectSerial = QPushButton(self.verticalLayoutWidget)
         self.pushButton_connectSerial.setObjectName(u"pushButton_connectSerial")
+        self.pushButton_connectSerial.setStyleSheet(u"background-color: rgb(172, 255, 117);\n"
+"border-color: rgb(0, 0, 0);")
 
         self.verticalLayout_serial.addWidget(self.pushButton_connectSerial)
 
         self.pushButton_disconnectSerial = QPushButton(self.verticalLayoutWidget)
         self.pushButton_disconnectSerial.setObjectName(u"pushButton_disconnectSerial")
+        self.pushButton_disconnectSerial.setStyleSheet(u"background-color: rgb(255, 133, 133);\n"
+"border-color: rgb(0, 0, 0);")
 
         self.verticalLayout_serial.addWidget(self.pushButton_disconnectSerial)
 
         self.verticalLayoutWidget_2 = QWidget(self.centralwidget)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(330, 210, 221, 80))
+        self.verticalLayoutWidget_2.setGeometry(QRect(330, 250, 221, 80))
         self.verticalLayout_sensor = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_sensor.setObjectName(u"verticalLayout_sensor")
         self.verticalLayout_sensor.setContentsMargins(0, 0, 0, 0)
         self.pushButton_readSensors = QPushButton(self.verticalLayoutWidget_2)
         self.pushButton_readSensors.setObjectName(u"pushButton_readSensors")
         self.pushButton_readSensors.setAutoFillBackground(False)
+        self.pushButton_readSensors.setStyleSheet(u"color: rgb(0, 0, 0);\n"
+"background-color: rgb(255, 221, 98);")
 
         self.verticalLayout_sensor.addWidget(self.pushButton_readSensors)
 
         self.pushButton_resetValues = QPushButton(self.verticalLayoutWidget_2)
         self.pushButton_resetValues.setObjectName(u"pushButton_resetValues")
+        self.pushButton_resetValues.setStyleSheet(u"background-color: rgb(255, 181, 89);")
 
         self.verticalLayout_sensor.addWidget(self.pushButton_resetValues)
+
+        self.verticalLayoutWidget_3 = QWidget(self.centralwidget)
+        self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
+        self.verticalLayoutWidget_3.setGeometry(QRect(30, 300, 281, 80))
+        self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget_3)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.textBrowser_sensorCode = QTextBrowser(self.verticalLayoutWidget_3)
+        self.textBrowser_sensorCode.setObjectName(u"textBrowser_sensorCode")
+        self.textBrowser_sensorCode.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(26, 25, 32);")
+
+        self.verticalLayout.addWidget(self.textBrowser_sensorCode)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 568, 21))
+        self.menubar.setGeometry(QRect(0, 0, 569, 18))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         MainWindow.setMenuBar(self.menubar)
@@ -170,6 +195,12 @@ class Ui_MainWindow(object):
         self.pushButton_disconnectSerial.setText(QCoreApplication.translate("MainWindow", u"Disconnect", None))
         self.pushButton_readSensors.setText(QCoreApplication.translate("MainWindow", u"Read Sensors", None))
         self.pushButton_resetValues.setText(QCoreApplication.translate("MainWindow", u"Reset Values", None))
+        self.textBrowser_sensorCode.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">int16_t sensorMin[8] { 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500 };</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">int16_t sensorMax[8] { 0, 0, 0, 0, 0, 0, 0, 0 };</p></body></html>", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
     # retranslateUi
 

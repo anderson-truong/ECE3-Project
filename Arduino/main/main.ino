@@ -36,6 +36,7 @@ const int baseSpd = 150;
 
 int sensorNorm[8];
 int16_t sensorMin[8] = {768, 676, 652, 582, 582, 536, 536, 700}; //{2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500};
+int16_t sensorMax[8];
 float fusionError;
 float prevFusionError = 0;
 float weights[8] = {-2., -1., -0.5, -0.25, 0.25, 0.5, 1., 2.};
