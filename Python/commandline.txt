@@ -1,0 +1,3 @@
+pyside6-uic calibration.ui -o MainWindow.py
+pyinstaller calibrate.py
+pyrcc5 resources.qrc -o resources_rc.py

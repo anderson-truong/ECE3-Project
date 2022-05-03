@@ -1,3 +1,4 @@
+altgraph==0.17.2
 anyio==3.5.0
 argon2-cffi==21.3.0
 argon2-cffi-bindings==21.2.0
@@ -19,6 +20,7 @@ entrypoints==0.4
 executing==0.8.3
 fastjsonschema==2.15.3
 fonttools==4.33.3
+future==0.18.2
 idna==3.3
 importlib-metadata==4.11.3
 ipykernel==6.13.0
@@ -50,6 +52,7 @@ numpy==1.22.3
 packaging==21.3
 pandocfilters==1.5.0
 parso==0.8.3
+pefile==2021.9.3
 pickleshare==0.7.5
 Pillow==9.1.0
 prometheus-client==0.14.1
@@ -58,15 +61,25 @@ psutil==5.9.0
 pure-eval==0.2.2
 pycparser==2.21
 Pygments==2.12.0
+pyinstaller==5.0.1
+pyinstaller-hooks-contrib==2022.4
 pyparsing==3.0.8
+PyQt5==5.15.4
+pyqt5-plugins==5.15.4.2.2
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.10.1
+pyqt5-tools==5.15.4.3.2
 pyrsistent==0.18.1
 pyserial==3.5
 PySide6==6.0.0
 python-dateutil==2.8.2
+python-dotenv==0.20.0
 pytz==2022.1
 pywin32==303
+pywin32-ctypes==0.2.0
 pywinpty==2.0.5
 pyzmq==22.3.0
+qt5-tools==5.15.2.1.2
 requests==2.27.1
 Send2Trash==1.8.0
 shiboken6==6.0.0
