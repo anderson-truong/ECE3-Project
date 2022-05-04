@@ -1,5 +1,6 @@
 # UCLA ECE 3 Project - Spring 2022
 ## Arduino Setup
+<a><img src="https://github.com/anderson-truong/ECE3-Project/blob/main/Documentation/Media/arduino-logo.png" height="225" width="300"></a>
 1. [Download Arduino IDE](https://www.arduino.cc/en/software)
 2. Go to File > Preferences > Additional Board Manager URLs
 3. Enter in the textbox: http://s3.amazonaws.com/energiaUS/packages/package_energia_index.json
@@ -8,6 +9,7 @@
 6. After installing, select the board under Tools > Board > "Energia MSP432 Red Boards" > "Red LaunchPad MSP432P401R EMT"
 
 ## TI-RSLK IR Sensor Calibration GUI
+<a href="https://github.com/anderson-truong/ECE3-Project/blob/main/Documentation/Media/app_2_calibrated.PNG"><img src="https://github.com/anderson-truong/ECE3-Project/blob/main/Documentation/Media/app_2_calibrated.PNG" height="317" width="400" ></a>
 1. Open "Calibrate.ino" under Arduino > Calibrate.
 
 2. Upload to the TI-RSLK.
