@@ -25,3 +25,7 @@ If the program prints out 5 lines of values, then the port is correct. Keep a no
 7. Click the Connect button.
 
 8. In between shifting your calibration paper, click the Read Sensors button to log the minimum and maximum IR readings for each sensor.
+
+9. Copy the C code under the table to use as your minimum and maximum value arrays.
+
+10. Go to File > Save As to save the C code in a .txt file.
