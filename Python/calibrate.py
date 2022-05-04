@@ -26,6 +26,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Defaults
         self.data_mins = [2500 for i in range(8)]
         self.data_maxs = [0 for i in range(8)]
+        self.data_min_str = 'int16_t sensorMin[8] { ' + ', '.join(map(str, self.data_mins)) + ' };'
+        self.data_max_str = 'int16_t sensorMax[8] { ' + ', '.join(map(str, self.data_maxs)) + '};'
 
         for idx, item in enumerate(self.data_mins):
             newItem = QtWidgets.QTableWidgetItem(str(item))
@@ -41,6 +43,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_disconnectSerial.clicked.connect(self.disconnect_serial)
         self.pushButton_readSensors.clicked.connect(self.readSensors)
         self.pushButton_resetValues.clicked.connect(self.resetValues)
+        self.actionSave_as.triggered.connect(self.file_save)
         self.updateCode()
 
     def connect_serial(self):
@@ -48,14 +51,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.ser.is_open:
             self.label_status.setText(f'{self.ser.port} still open!')
             return
-
-        if self.lineEdit_baudrate.text().isnumeric():
-            self.ser.baudrate = int(self.lineEdit_baudrate.text())
-        else:
-            self.label_status.setText('Invalid baud rate!')
-            return
-
-        self.ser.port = self.lineEdit_serialport.text()
 
         # If new Serial Port not open
         if not self.ser.is_open:
@@ -68,6 +63,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.label_status.setText('Serial port closed!')
             return
+
+        if self.lineEdit_baudrate.text().isnumeric():
+            self.ser.baudrate = int(self.lineEdit_baudrate.text())
+        else:
+            self.label_status.setText('Invalid baud rate!')
+            return
+
+        self.ser.port = self.lineEdit_serialport.text()
 
     def disconnect_serial(self):
         if self.ser.is_open:
@@ -116,9 +119,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.tableWidget_dataTable.item(idx, 1).setText(str(item))
 
     def updateCode(self):
-        data_min_str = 'int16_t sensorMin[8] { ' + ', '.join(map(str, self.data_mins)) + ' };'
-        data_max_str = 'int16_t sensorMax[8] { ' + ', '.join(map(str, self.data_maxs)) + '};'
-        self.textBrowser_sensorCode.setText('\n'.join((data_min_str, data_max_str)))
+        self.data_min_str = 'int16_t sensorMin[8] { ' + ', '.join(map(str, self.data_mins)) + ' };'
+        self.data_max_str = 'int16_t sensorMax[8] { ' + ', '.join(map(str, self.data_maxs)) + '};'
+        self.textBrowser_sensorCode.setText('\n'.join((self.data_min_str, self.data_max_str)))
+
+    def file_save(self):
+        name, _ = QtWidgets.QFileDialog.getSaveFileName(self, 'Save as', "", "Text file (*.txt)")
+        file = open(name.rstrip('.txt') + '.txt', 'w')
+        file.write(self.data_min_str + '\n' + self.data_max_str)
+        file.close()
 
 
 if __name__ == '__main__':

@@ -4,11 +4,115 @@
     <list default="true" id="d0f49e27-4720-42c8-8641-f216b515d047" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calibrate.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/COLLECT-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/PKG-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/PYZ-00.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/PYZ-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/Tree-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/Tree-01.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/Tree-02.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/calibrate.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/calibrate.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/calibrate.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/warn-calibrate.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibrate/xref-calibrate.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/calibration.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/calibration.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/warn-calibration.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/warn-calibration.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/calibration/xref-calibration.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/calibration/xref-calibration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calibration.ui" beforeDir="false" afterPath="$PROJECT_DIR$/calibration.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commandline.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/MSVCP140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/MSVCP140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/QtCore.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/QtGui.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/QtNetwork.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/QtWidgets.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/iconengines/qsvgicon.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/imageformats/qgif.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/imageformats/qico.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/imageformats/qjpeg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/imageformats/qsvg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/platforms/qdirect2d.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/platforms/qminimal.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/platforms/qoffscreen.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/platforms/qwindows.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/plugins/styles/qwindowsvistastyle.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_ar.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_bg.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_ca.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_cs.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_da.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_de.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_en.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_es.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_fa.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_fi.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_fr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_gd.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_he.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_hr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_hu.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_it.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_ja.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_ko.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_lv.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_nl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_nn.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_pl.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_pt_BR.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_ru.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_sk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_tr.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_uk.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_zh_CN.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/PySide6/translations/qtbase_zh_TW.qm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/Qt6Core.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/Qt6Gui.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/Qt6Network.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/Qt6Qml.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/Qt6Svg.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/Qt6Widgets.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/VCRUNTIME140.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/VCRUNTIME140_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_asyncio.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_bz2.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_ctypes.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_decimal.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_hashlib.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_lzma.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_multiprocessing.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_overlapped.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_queue.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_socket.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/_ssl.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/calibrate.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/libcrypto-1_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/libffi-7.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/libssl-1_1.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/opengl32sw.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/pyexpat.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/pyside6.abi3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/python3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/python39.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/select.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/shiboken6.abi3.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/shiboken6/shiboken6.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibrate/unicodedata.pyd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/calibration.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/calibration.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/dist/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/icon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/resources.qrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources_rc.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources_rc.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +147,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="PLAIN_TEXT" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
   </component>
   <component name="RunManager" selected="Python.calibrate">
