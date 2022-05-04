@@ -51,7 +51,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.ser.is_open:
             self.label_status.setText(f'{self.ser.port} still open!')
             return
-
+        self.ser.port = self.lineEdit_serialport.text()
         # If new Serial Port not open
         if not self.ser.is_open:
             try:
@@ -69,8 +69,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.label_status.setText('Invalid baud rate!')
             return
-
-        self.ser.port = self.lineEdit_serialport.text()
 
     def disconnect_serial(self):
         if self.ser.is_open:
