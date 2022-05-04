@@ -21,7 +21,8 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u":/icon.png", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"background-color: rgb(50, 51, 61);")
+        MainWindow.setStyleSheet(u"background-color: rgb(23, 23, 23);")
+        MainWindow.setTabShape(QTabWidget.Rounded)
         self.actionSave = QAction(MainWindow)
         self.actionSave.setObjectName(u"actionSave")
         self.actionSave_as = QAction(MainWindow)
@@ -53,18 +54,50 @@ class Ui_MainWindow(object):
         self.tableWidget_dataTable.setVerticalHeaderItem(6, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
         self.tableWidget_dataTable.setVerticalHeaderItem(7, __qtablewidgetitem9)
+        brush = QBrush(QColor(255, 255, 255, 255))
+        brush.setStyle(Qt.NoBrush)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        __qtablewidgetitem10.setBackground(brush);
+        self.tableWidget_dataTable.setItem(0, 0, __qtablewidgetitem10)
         self.tableWidget_dataTable.setObjectName(u"tableWidget_dataTable")
         self.tableWidget_dataTable.setGeometry(QRect(30, 30, 281, 271))
-        self.tableWidget_dataTable.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(50, 51, 61);")
+        self.tableWidget_dataTable.setAutoFillBackground(False)
+        self.tableWidget_dataTable.setStyleSheet(u"QTableCornerButton::section\n"
+"{\n"
+"	\n"
+"	background-color: rgb(23, 23, 23);\n"
+"}\n"
+"\n"
+"QHeaderView::section\n"
+"{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"	border: 2px outset rgb(203, 203, 203);\n"
+"}\n"
+"\n"
+"QTableView::item\n"
+"{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QTableView\n"
+"{\n"
+"	gridline-color: rgb(203, 203, 203);\n"
+"	border: none;\n"
+"}")
+        self.tableWidget_dataTable.horizontalHeader().setDefaultSectionSize(109)
+        self.tableWidget_dataTable.verticalHeader().setCascadingSectionResizes(False)
+        self.tableWidget_dataTable.verticalHeader().setDefaultSectionSize(30)
+        self.tableWidget_dataTable.verticalHeader().setProperty("showSortIndicator", False)
+        self.tableWidget_dataTable.verticalHeader().setStretchLastSection(False)
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(360, 70, 160, 163))
+        self.verticalLayoutWidget.setGeometry(QRect(360, 30, 160, 163))
         self.verticalLayout_serial = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_serial.setObjectName(u"verticalLayout_serial")
         self.verticalLayout_serial.setContentsMargins(0, 0, 0, 0)
         self.label_status = QLabel(self.verticalLayoutWidget)
         self.label_status.setObjectName(u"label_status")
+        self.label_status.setStyleSheet(u"color: rgb(255, 255, 255);")
         self.label_status.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_serial.addWidget(self.label_status)
@@ -78,6 +111,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_serialport = QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_serialport.setObjectName(u"lineEdit_serialport")
+        self.lineEdit_serialport.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.lineEdit_serialport.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_serial.addWidget(self.lineEdit_serialport)
@@ -91,13 +125,14 @@ class Ui_MainWindow(object):
 
         self.lineEdit_baudrate = QLineEdit(self.verticalLayoutWidget)
         self.lineEdit_baudrate.setObjectName(u"lineEdit_baudrate")
+        self.lineEdit_baudrate.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.lineEdit_baudrate.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_serial.addWidget(self.lineEdit_baudrate)
 
         self.pushButton_connectSerial = QPushButton(self.verticalLayoutWidget)
         self.pushButton_connectSerial.setObjectName(u"pushButton_connectSerial")
-        self.pushButton_connectSerial.setStyleSheet(u"background-color: rgb(172, 255, 117);\n"
+        self.pushButton_connectSerial.setStyleSheet(u"background-color: rgb(163, 247, 191);\n"
 "border-color: rgb(0, 0, 0);")
 
         self.verticalLayout_serial.addWidget(self.pushButton_connectSerial)
@@ -111,7 +146,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayoutWidget_2 = QWidget(self.centralwidget)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(330, 250, 221, 80))
+        self.verticalLayoutWidget_2.setGeometry(QRect(330, 210, 221, 80))
         self.verticalLayout_sensor = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_sensor.setObjectName(u"verticalLayout_sensor")
         self.verticalLayout_sensor.setContentsMargins(0, 0, 0, 0)
@@ -131,23 +166,51 @@ class Ui_MainWindow(object):
 
         self.verticalLayoutWidget_3 = QWidget(self.centralwidget)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(30, 300, 281, 80))
+        self.verticalLayoutWidget_3.setGeometry(QRect(30, 300, 501, 80))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.textBrowser_sensorCode = QTextBrowser(self.verticalLayoutWidget_3)
         self.textBrowser_sensorCode.setObjectName(u"textBrowser_sensorCode")
         self.textBrowser_sensorCode.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(26, 25, 32);")
+"background-color: rgb(23, 23, 23);")
 
         self.verticalLayout.addWidget(self.textBrowser_sensorCode)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 569, 18))
+        self.menubar.setGeometry(QRect(0, 0, 569, 21))
+        self.menubar.setStyleSheet(u"QMenuBar::item\n"
+"{\n"
+"	color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QMenuBar::item:selected {\n"
+"	\n"
+"	background-color: rgb(65, 65, 65);\n"
+"}\n"
+"\n"
+"QMenuBar::item:pressed {\n"
+"	background-color: rgb(83, 83, 83);\n"
+"}")
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
+        self.menuFile.setStyleSheet(u"QMenu::item\n"
+"{\n"
+"	color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QMenu::item:selected\n"
+"{\n"
+"	background-color: rgb(65, 65, 65);\n"
+"}\n"
+"\n"
+"QMenu::item:pressed\n"
+"{\n"
+"	\n"
+"	background-color: rgb(83, 83, 83);\n"
+"}")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -186,6 +249,11 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Sensor 6", None));
         ___qtablewidgetitem9 = self.tableWidget_dataTable.verticalHeaderItem(7)
         ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Sensor 7", None));
+
+        __sortingEnabled = self.tableWidget_dataTable.isSortingEnabled()
+        self.tableWidget_dataTable.setSortingEnabled(False)
+        self.tableWidget_dataTable.setSortingEnabled(__sortingEnabled)
+
         self.label_status.setText("")
         self.label_serialport.setText(QCoreApplication.translate("MainWindow", u"Serial Port", None))
         self.lineEdit_serialport.setText("")
@@ -198,9 +266,9 @@ class Ui_MainWindow(object):
         self.textBrowser_sensorCode.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">int16_t sensorMin[8] { 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500 };</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">int16_t sensorMax[8] { 0, 0, 0, 0, 0, 0, 0, 0 };</p></body></html>", None))
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">int16_t sensorMin[8] { 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500 };</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt;\">int16_t sensorMax[8] { 0, 0, 0, 0, 0, 0, 0, 0 };</span></p></body></html>", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
     # retranslateUi
 
