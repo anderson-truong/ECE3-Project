@@ -30,13 +30,18 @@ const int BMP2 = 6;
 
 const int LED_RF = 41;
 
-const float kP = 0.005;
-const float kD = 0.002;
-const int baseSpd = 150;
+long enc_bin_cnt;
+const unsigned long enc_bin_len = 50; // 50 ms bins
+
+const float kP = 0.04;
+const float kD = 0.01;
+const int baseSpd = 50;
+
+int turns = 0;
 
 int sensorNorm[8];
-int16_t sensorMin[8] = {768, 676, 652, 582, 582, 536, 536, 700}; //{2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500};
-int16_t sensorMax[8];
+int16_t sensorMin[8] { 744, 675, 605, 558, 581, 557, 557, 720 };
+int16_t sensorMax[8] { 2500, 2500, 2005, 2077, 1934, 2500, 2242, 2500};
 float fusionError;
 float prevFusionError = 0;
 float weights[8] = {-2., -1., -0.5, -0.25, 0.25, 0.5, 1., 2.};
@@ -77,17 +82,56 @@ void setup() {
 
   //Serial.begin(9600);
   ECE3_Init();
+  delay(2000);
 }
 
 void loop() {
-    if (calib == 0)
+    fusion();
+    turn();
+    //Serial.print(fusionError);
+    //Serial.println();
+    if (turns < 2)
     {
-      fusion();
       analogWrite(left_pwm_pin,baseSpd - kP*fusionError - kD*(fusionError - prevFusionError));
       analogWrite(right_pwm_pin,baseSpd + kP*fusionError + kD*(fusionError - prevFusionError));
-      prevFusionError = fusionError;
     }
+    prevFusionError = fusionError;
+    //delay(50);
+}
+
+void turn()
+{
+  bool condition = true;
+  bool loopCondition[2] = {true, true};
+  for (uint8_t j = 0; j < 2; j++)
+  {
+    for (uint8_t i = 0; i < 8; i++)
+      if (sensorNorm[i] < 1000)
+        loopCondition[j] = false;
+    condition *= loopCondition[j];
     delay(50);
+  }
+  if (condition)
+  {
+    turns++;
+    if (turns == 0)
+    {
+      resetEncoderCount_left();
+    delay(50);
+    enc_bin_cnt = getEncoderCount_left();
+    while (enc_bin_cnt < 380)
+    {
+      delay(50);
+      enc_bin_cnt = getEncoderCount_left();
+      analogWrite(left_pwm_pin, 50);
+      digitalWrite(right_dir_pin,HIGH);
+      analogWrite(right_pwm_pin, 50);
+    }
+    analogWrite(left_pwm_pin, 0);
+    analogWrite(right_pwm_pin, 0);
+    digitalWrite(right_dir_pin, LOW);
+    }
+  }
 }
 
 void normalize()
@@ -132,8 +176,6 @@ void fusion()
   {
     fusionError += weights[i] * sensorNorm[i];
   }
-  //Serial.print(fusionError);
-  //Serial.println();
 }
 
 void offMotors()
