@@ -33,18 +33,18 @@ const int LED_RF = 41;
 long enc_bin_cnt;
 const unsigned long enc_bin_len = 50; // 50 ms bins
 
-const float kP = 0.08; // 0.08
-const float kD = 0.8; // 0.8
-const int baseSpd = 190; // 180
+const float kP = 0.1; // 0.08
+const float kD = 0.0; // 0.8
+const int baseSpd = 100; // 180
 
 int turns = 0;
 
 int sensorNorm[8];
-int16_t sensorMin[8] { 767, 673, 604, 558, 604, 581, 581, 743 };
-int16_t sensorMax[8] { 2500, 2500, 2005, 1934, 2005, 2500, 2413, 2500};
+int16_t sensorMin[8] { 490, 444, 421, 375, 421, 398, 444, 537 };
+int16_t sensorMax[8] { 2450, 2500, 1674, 1626, 1697, 2142, 2019, 2500};
 float fusionError;
 float prevFusionError = 0;
-float weights[8] = {-2., -1., -0.5, -0.25, 0.25, 0.5, 1., 2.};
+float weights[8] = {-0.4, -0.3, -0.2, -0.1, 0.1, 0.2, 0.3, 0.4};
 
 uint8_t calib = 0;
 
@@ -63,22 +63,7 @@ void setup() {
   digitalWrite(right_dir_pin,LOW);
   digitalWrite(right_nslp_pin,HIGH);
 
-  // Bumper 0 disables motors
-  pinMode(BMP0, INPUT_PULLUP);
-  attachInterrupt(BMP0, offMotors, FALLING);
-
-  // Bumper 1 enables motors
-  pinMode(BMP1, INPUT_PULLUP);
-  attachInterrupt(BMP1, onMotors, FALLING);
-
-  // Bumper 2 calibrates
-  pinMode(BMP2, INPUT_PULLUP);
-  attachInterrupt(BMP2, calibrate, FALLING);
-
-  pinMode(left_push, INPUT_PULLUP);
-  //attachInterrupt(left_push, incrementCalibrate, FALLING);
-
-  pinMode(LED_RF, OUTPUT);
+  // pinMode(LED_RF, OUTPUT);
 
   //Serial.begin(9600);
   ECE3_Init();
@@ -123,13 +108,7 @@ void turn()
     {
       delay(50);
       enc_bin_cnt = getEncoderCount_left();
-      analogWrite(left_pwm_pin, 50);
-      digitalWrite(right_dir_pin,HIGH);
-      analogWrite(right_pwm_pin, 50);
     }
-    analogWrite(left_pwm_pin, 0);
-    analogWrite(right_pwm_pin, 0);
-    digitalWrite(right_dir_pin, LOW);
     }
   }
 }
@@ -176,78 +155,4 @@ void fusion()
   {
     fusionError += weights[i] * sensorNorm[i];
   }
-}
-
-void offMotors()
-{
-  calib = 1;
-  analogWrite(left_pwm_pin, 0);
-  analogWrite(right_pwm_pin, 0);
-}
-
-void onMotors()
-{
-  calib = 0;
-}
-
-// Finds mins/max
-void calibrate()
-{
-  offMotors();
-  digitalWrite(LED_RF, HIGH);
-  int avg[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-  for (uint8_t i = 0; i < 5; i++)
-  {
-    ECE3_read_IR(sensorValues);
-    for (uint8_t j = 0; j < 8; j++)
-    {
-      avg[j] += sensorValues[j];
-    }
-    delay(50);
-  }
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    avg[i] /= 5;
-    
-    if (avg[i] < sensorMin[i])
-      sensorMin[i] = avg[i];
-    if (avg[i] > sensorMax[i])
-      sensorMax[i] = avg[i];
-    
-  }
-  printBounds();
-  delay(50);
-  digitalWrite(LED_RF, LOW);
-}
-
-void printBounds()
-{
-  Serial.print("Min: ");
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    Serial.print(sensorMin[i]);
-    Serial.print('\t');
-  }
-  Serial.print("Max: ");
-  for (uint8_t i = 0; i < 8; i++)
-  {
-    Serial.print(sensorMax[i]);
-    Serial.print('\t');
-  }
-  Serial.println();
-}
-
-void printIR()
-{
-  for (uint8_t j = 0; j < 5; j++)
-  {
-    ECE3_read_IR(sensorValues);
-    for (uint8_t i = 0; i < 8; i++)
-    {
-      Serial.print(sensorValues[i]);
-      Serial.print(',');
-    }
-    Serial.println();
-  }
-  Serial.println();
 }
