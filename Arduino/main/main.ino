@@ -33,15 +33,15 @@ const int LED_RF = 41;
 long enc_bin_cnt;
 const unsigned long enc_bin_len = 50; // 50 ms bins
 
-const float kP = 0.04;
-const float kD = 0.01;
-const int baseSpd = 50;
+const float kP = 0.08; // 0.08
+const float kD = 0.8; // 0.8
+const int baseSpd = 190; // 180
 
 int turns = 0;
 
 int sensorNorm[8];
-int16_t sensorMin[8] { 744, 675, 605, 558, 581, 557, 557, 720 };
-int16_t sensorMax[8] { 2500, 2500, 2005, 2077, 1934, 2500, 2242, 2500};
+int16_t sensorMin[8] { 767, 673, 604, 558, 604, 581, 581, 743 };
+int16_t sensorMax[8] { 2500, 2500, 2005, 1934, 2005, 2500, 2413, 2500};
 float fusionError;
 float prevFusionError = 0;
 float weights[8] = {-2., -1., -0.5, -0.25, 0.25, 0.5, 1., 2.};
@@ -87,7 +87,7 @@ void setup() {
 
 void loop() {
     fusion();
-    turn();
+    //turn();
     //Serial.print(fusionError);
     //Serial.println();
     if (turns < 2)
