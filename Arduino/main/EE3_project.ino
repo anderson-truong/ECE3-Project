@@ -18,22 +18,26 @@ const int right_dir_pin=30;
 const int right_pwm_pin=39;
 
 // PID Values
-const float kP = 3;
-const float kD = 5;
-const int baseSpd = 120;
+const float kP = 0.75;
+const float kD = 1.5;
+const int baseSpd = 80;
 
 int flips = 0;
 bool crosspiece = false;
 
 // Normalization
 int sensorNorm[8];
-int16_t sensorMin[8] { 300, 300, 300, 300, 300, 300, 300, 300 };
-int16_t sensorMax[8] { 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500};
+// int16_t sensorMin[8] { 300, 300, 300, 300, 300, 300, 300, 300 };
+// int16_t sensorMax[8] { 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500};
+
+int16_t sensorMin[8] { 421, 467, 421, 513, 444, 536, 513, 559 };
+int16_t sensorMax[8] { 2005, 1982, 1896, 1645, 1707, 2332, 1830, 2078};
 
 // Sensor Fusion
 float fusionError;
 float prevFusionError = 0;
-float weights[8] = {-0.5, -0.35, -0.2, -0.05, 0.05, 0.2, 0.35, 0.5};
+// float weights[8] = {-0.5, -0.35, -0.2, -0.05, 0.05, 0.2, 0.35, 0.5};
+float weights[8] = {-0.6, -0.3, -0.15, -0.05, 0.05, 0.15, 0.3, 0.6};
 
 // PWM for each motor
 int16_t leftPwm = 0;
@@ -66,33 +70,28 @@ void setup() {
 
 void loop() {
     fusion();
-    if (flips == 0) checkForFlip();
-    // if (flips < 1)
+    checkForFlip();
+    leftPwm = baseSpd - kP*fusionError - kD*(fusionError - prevFusionError);
+    rightPwm = baseSpd + kP*fusionError + kD*(fusionError - prevFusionError);
+    /*
+    // Normalize pwm
+    int maxPwm = leftPwm > rightPwm ? leftPwm : rightPwm;
+    if (maxPwm > 250)
     {
-      leftPwm = baseSpd - kP*fusionError - kD*(fusionError - prevFusionError);
-      rightPwm = baseSpd + kP*fusionError + kD*(fusionError - prevFusionError);
-      /*
-      // Normalize pwm
-      int maxPwm = leftPwm > rightPwm ? leftPwm : rightPwm;
-      if (maxPwm > 250)
-      {
-        leftPwm *= 250;
-        leftPwm /= maxPwm;
-        rightPwm *= 250;
-        rightPwm /= maxPwm;
-      }
-      */
-      /*
-      Serial.print(leftPwm);
-      Serial.print('\t');
-      Serial.println(rightPwm);
-      */
-      leftPwm /= 2;
-      rightPwm /= 2;
-      
-      analogWrite(left_pwm_pin,leftPwm);
-      analogWrite(right_pwm_pin,rightPwm);
+      leftPwm *= 250;
+      leftPwm /= maxPwm;
+      rightPwm *= 250;
+      rightPwm /= maxPwm;
     }
+    */
+    /*
+    Serial.print(leftPwm);
+    Serial.print('\t');
+    Serial.println(rightPwm);
+    */
+    
+    analogWrite(left_pwm_pin,leftPwm);
+    analogWrite(right_pwm_pin,rightPwm);
     prevFusionError = fusionError;
 }
 
@@ -108,8 +107,9 @@ void checkForFlip()
   if (condition && crosspiece)
   {
     Serial.println("Flip condition met");
-    if (flips++ == 0)
+    if (flips == 0)
     {
+      flips++;
       resetEncoderCount_left();
       resetEncoderCount_right();
 
@@ -118,10 +118,16 @@ void checkForFlip()
       while (averageEncoderCount() < 360)
       {
         // Serial.println("Turning...");
-        analogWrite(left_pwm_pin, 50);
-        analogWrite(right_pwm_pin, 50);
+        analogWrite(left_pwm_pin, 120);
+        analogWrite(right_pwm_pin, 120);
       }
       digitalWrite(right_dir_pin, LOW);
+    }
+    else if (flips == 1) {
+        flips++;
+        analogWrite(left_pwm_pin, 0);
+        analogWrite(right_pwm_pin, 0);
+        delay(30000);
     }
   }
   crosspiece = condition;
