@@ -19,8 +19,8 @@ const int right_pwm_pin=39;
 
 // PID Values
 const float kP = 0.1; // 0.08
-const float kD = 0.0; // 0.8
-const int baseSpd = 100; // 180
+const float kD = 0.1; // 0.8
+const int baseSpd = 180; // 180
 
 int turns = 0;
 
@@ -58,7 +58,7 @@ void setup() {
   digitalWrite(right_dir_pin,LOW);
   digitalWrite(right_nslp_pin,HIGH);
 
-  //Serial.begin(9600);
+  Serial.begin(9600);
   ECE3_Init();
   delay(2000);
 }
@@ -70,11 +70,22 @@ void loop() {
     {
       leftPwm = baseSpd - kP*fusionError - kD*(fusionError - prevFusionError);
       rightPwm = baseSpd + kP*fusionError + kD*(fusionError - prevFusionError);
+      // Normalize pwm
+      int maxPwm = leftPwm > rightPwm ? leftPwm : rightPwm;
+      if (maxPwm > 250)
+      {
+        leftPwm *= 250;
+        leftPwm /= maxPwm;
+        rightPwm *= 250;
+        rightPwm /= maxPwm;
+      }
+      Serial.print(leftPwm);
+      Serial.print('\t');
+      Serial.println(rightPwm);
       analogWrite(left_pwm_pin,leftPwm);
       analogWrite(right_pwm_pin,rightPwm);
     }
     prevFusionError = fusionError;
-    //delay(50);
 }
 
 void turn()
@@ -114,20 +125,12 @@ void normalize()
   // Initialize norm array to 0
   for (uint8_t i = 0; i < 8; i++) sensorNorm[i] = 0;
 
-  // Sum up N number of sensor readings
-  // uint8_t N = 1;
-  // for (uint8_t i = 0; i < N; i++)
-  // {
   ECE3_read_IR(sensorValues);
   for (uint8_t j = 0; j < 8; j++)
     sensorNorm[j] += sensorValues[j];
-  //delay(10);
-  // }
-  
+    
   for (uint8_t i = 0; i < 8; i++)
   {
-    // Divide by N for averages
-    sensorNorm[i] /= N;
     // Floor
     sensorNorm[i] -= sensorMin[i];
   }
