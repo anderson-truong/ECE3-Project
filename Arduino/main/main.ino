@@ -18,11 +18,12 @@ const int right_dir_pin=30;
 const int right_pwm_pin=39;
 
 // PID Values
-const float kP = 0.1; // 0.08
-const float kD = 0.1; // 0.8
-const int baseSpd = 180; // 180
+const float kP = 2;
+const float kD = 0.0;
+const int baseSpd = 100;
 
-int turns = 0;
+bool crosspiece = false;
+bool flipped = false;
 
 // Normalization
 int sensorNorm[8];
@@ -43,7 +44,6 @@ int average()
   return ((getEncoderCount_left() + getEncoderCount_right())/2);
 }
 
-///////////////////////////////////
 void setup() {
 // put your setup code here, to run once:
   pinMode(left_nslp_pin,OUTPUT);
@@ -58,66 +58,53 @@ void setup() {
   digitalWrite(right_dir_pin,LOW);
   digitalWrite(right_nslp_pin,HIGH);
 
-  Serial.begin(9600);
+  //Serial.begin(9600);
   ECE3_Init();
   delay(2000);
 }
 
 void loop() {
     fusion();
-    //turn();
-    if (turns < 2)
+    leftPwm = baseSpd - kP*fusionError - kD*(fusionError - prevFusionError);
+    rightPwm = baseSpd + kP*fusionError + kD*(fusionError - prevFusionError);
+    // Normalize pwm
+    int maxPwm = leftPwm > rightPwm ? leftPwm : rightPwm;
+    if (maxPwm > 250)
     {
-      leftPwm = baseSpd - kP*fusionError - kD*(fusionError - prevFusionError);
-      rightPwm = baseSpd + kP*fusionError + kD*(fusionError - prevFusionError);
-      // Normalize pwm
-      int maxPwm = leftPwm > rightPwm ? leftPwm : rightPwm;
-      if (maxPwm > 250)
-      {
-        leftPwm *= 250;
-        leftPwm /= maxPwm;
-        rightPwm *= 250;
-        rightPwm /= maxPwm;
-      }
-      Serial.print(leftPwm);
-      Serial.print('\t');
-      Serial.println(rightPwm);
-      analogWrite(left_pwm_pin,leftPwm);
-      analogWrite(right_pwm_pin,rightPwm);
+      leftPwm *= 250;
+      leftPwm /= maxPwm;
+      rightPwm *= 250;
+      rightPwm /= maxPwm;
     }
+    //Serial.print(leftPwm);
+    //Serial.print('\t');
+    //Serial.println(rightPwm);
+    analogWrite(left_pwm_pin,leftPwm);
+    analogWrite(right_pwm_pin,rightPwm);
     prevFusionError = fusionError;
 }
 
-void turn()
+void flip()
 {
-  bool condition = true;
+  bool current = true;
+  for (uint8_t i = 0; i < 8; i++)
+    if (sensorNorm[i] < 1500)
+      current = false;
 
-  // Check N readings if all sensors high
-  uint8_t N = 2;
-  for (uint8_t j = 0; j < N; j++)
+  if (current && crosspiece && !flipped)
   {
-    for (uint8_t i = 0; i < 8; i++)
-      // Value is not high, condition not met
-      if (sensorNorm[i] < 1000)
-        condition = false;
-  }
+    flipped = true;
+    resetEncoderCount_left();
+    resetEncoderCount_right();
 
-  // If all sensors high for N readings
-  if (condition)
-  {
-    if (turns++ == 0)
+    // Check if completed 180 turn
+    while (average() < 360)
     {
-      resetEncoderCount_left();
-      resetEncoderCount_right();
-
-      // Check if completed 180 turn
-      while (average() < 360)
-      {
-        analogWrite(left_pwm_pin, 50);
-        analogWrite(right_pwm_pin, -50);
-      }
+      analogWrite(left_pwm_pin, 50);
+      analogWrite(right_pwm_pin, -50);
     }
   }
+  crosspiece = current;
 }
 
 void normalize()
@@ -151,4 +138,5 @@ void fusion()
   {
     fusionError += weights[i] * sensorNorm[i];
   }
+  fusionError /= 8;
 }
