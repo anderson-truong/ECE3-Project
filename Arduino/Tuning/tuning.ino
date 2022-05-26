@@ -101,8 +101,8 @@ void loop() {
       rightPwm /= maxPwm;
     }
     */ 
-    analogWrite(left_pwm_pin,leftPwm);
-    analogWrite(right_pwm_pin,rightPwm);
+    //analogWrite(left_pwm_pin,leftPwm);
+    //analogWrite(right_pwm_pin,rightPwm);
     prevFusionError = fusionError;
 }
 
